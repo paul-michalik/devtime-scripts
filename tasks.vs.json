@@ -1,0 +1,69 @@
+{
+    "version": "0.2.1",
+    "tasks": [
+        {
+            "taskName": "Invoke script",
+            "appliesTo": "*.bat,*.ps1",
+            "command": "${file}",
+            "type": "launch"
+        },
+        {
+            "taskName": "Invoke bash script",
+            "appliesTo": "*.sh",
+            "command": "${env.HOMEPATH}\\Source\\devtime-scripts\\internal\\bash.bat",
+            "args": [ "\"${file}\"" ],
+            "type": "launch"
+        },
+        {
+            "taskName": "dos2unix",
+            "appliesTo": "*",
+            "command": "${env.HOMEPATH}\\Source\\devtime-scripts\\internal\\dos2unix.bat",
+            "args": [ "\"${file}\"" ],
+            "type": "launch",
+            "contextType": "custom"
+        },
+        {
+            "taskName": "Make all shell scripts executable for Git",
+            "appliesTo": "/",
+            "command": "${env.HOMEPATH}\\Source\\devtime-scripts\\internal\\all_sh_executable_for_git.bat",
+            "type": "launch"
+        },
+        {
+            "taskName": "dos2unix for all shell scripts",
+            "appliesTo": "/",
+            "command": "${env.HOMEPATH}\\Source\\devtime-scripts\\internal\\all_dos2unix.ps1",
+            "type": "launch"
+        },
+        {
+            "taskName": "Make executable for Git",
+            "appliesTo": "*.sh,*.py",
+            "command": "git",
+            "args": [ "update-index", "--add", "--chmod=+x", "\"${file}\"" ],
+            "type": "launch"
+        },
+        {
+            "taskName": "terraform init",
+            "appliesTo": "*.tf",
+            "workingDirectory": "${fileDirname}",
+            "command": "terraform",
+            "args": [ "init" ],
+            "type": "launch"
+        },
+        {
+            "taskName": "terraform validate",
+            "appliesTo": "*.tf",
+            "workingDirectory": "${fileDirname}",
+            "command": "terraform",
+            "args": [ "validate" ],
+            "type": "launch"
+        },
+        {
+            "taskName": "terraform plan",
+            "appliesTo": "*.tf",
+            "workingDirectory": "${fileDirname}",
+            "command": "terraform",
+            "args": [ "plan" ],
+            "type": "launch"
+        }
+    ]
+}
