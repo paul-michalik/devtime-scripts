@@ -23,16 +23,18 @@
             "contextType": "custom"
         },
         {
-            "taskName": "Make all shell scripts executable for Git",
-            "appliesTo": "/",
-            "command": "${env.HOMEPATH}\\Source\\devtime-scripts\\internal\\all_sh_executable_for_git.bat",
-            "type": "launch"
+            "taskName": "all shell scripts executable for Git",
+            "appliesTo": "*",
+            "command": "powershell",
+            "type": "default",
+            "args": [ "${env.HOMEPATH}\\Source\\devtime-scripts\\internal\\all_sh_executable_for_git.ps1", "-folder", "\"${file}\"" ]
         },
         {
             "taskName": "dos2unix for all shell scripts",
-            "appliesTo": "/",
-            "command": "${env.HOMEPATH}\\Source\\devtime-scripts\\internal\\all_dos2unix.ps1",
-            "type": "launch"
+            "appliesTo": "*",
+            "command": "powershell",
+            "type": "default",
+            "args": [ "${env.HOMEPATH}\\Source\\devtime-scripts\\internal\\all_dos2unix.ps1", "-folder", "\"${file}\"" ]
         },
         {
             "taskName": "Make executable for Git",

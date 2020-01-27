@@ -3,13 +3,15 @@ param (
 )
 
 Write-Host 'Processing folder: ' $folder
-Get-ChildItem -Path $folder -Recurse -Include '*.sh','*.py','[Mm]akefile' `
+Get-ChildItem -Path $folder -Recurse -Include '*.sh' `
     | Where-Object{ `
              $_.FullName -notlike "*\.git\*" `
         -and $_.FullName -notlike "*\.terraform\*" `
         -and $_.FullName -notlike "*\bin\*" `
     }`
-    | foreach { 
-        $unixPath = $_.FullName -replace "\\","/"
-        &'C:\Program Files\Git\usr\bin\dos2unix.exe' $unixPath
+    | foreach {
+        Push-Location $_.DirectoryName
+        Write-Host 'Current directory: ' $(Get-Location)
+        git update-index --verbose --add --chmod=+x $($_.Name)
+        Pop-Location
     }
