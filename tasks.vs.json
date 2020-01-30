@@ -100,7 +100,7 @@
             "appliesTo": "*.tf",
             "workingDirectory": "${fileDirname}",
             "command": "terraform",
-            "args": [ "fmt", "-write=false" ],
+            "args": [ "fmt" ],
             "type": "launch"
         }
     ]
