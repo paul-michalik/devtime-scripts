@@ -3,7 +3,7 @@ param (
 )
 
 Write-Host 'Processing folder: ' $folder
-Get-ChildItem -Path $folder -Recurse -Include '*.sh','*.py','[Mm]akefile' `
+Get-ChildItem -Path $folder -Recurse -Include '*.tf','*.sh','*.py','[Mm]akefile' `
     | Where-Object{ `
              $_.FullName -notlike "*\.git\*" `
         -and $_.FullName -notlike "*\.terraform\*" `

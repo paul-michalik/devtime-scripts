@@ -30,7 +30,7 @@
             "args": [ "${env.HOMEPATH}\\Source\\devtime-scripts\\internal\\all_sh_executable_for_git.ps1", "-folder", "\"${file}\"" ]
         },
         {
-            "taskName": "dos2unix for all shell scripts",
+            "taskName": "dos2unix for all scripts",
             "appliesTo": "*",
             "command": "powershell",
             "type": "default",
@@ -100,7 +100,7 @@
             "appliesTo": "*.tf",
             "workingDirectory": "${fileDirname}",
             "command": "terraform",
-            "args": [ "fmt" ],
+            "args": [ "fmt", "-no-color" ],
             "type": "launch"
         }
     ]
