@@ -3,7 +3,7 @@
     "tasks": [
         {
             "taskName": "Invoke script",
-            "appliesTo": "*.bat,*.ps1",
+            "appliesTo": "*.`,*.ps1",
             "command": "${file}",
             "type": "launch"
         },
@@ -48,7 +48,7 @@
             "appliesTo": "*.tf",
             "workingDirectory": "${fileDirname}",
             "command": "terraform",
-            "args": [ "init", "-no-color", "-backend-config=\"..\\..\\backends\\s3.590417911352.json\"" ],
+            "args": [ "init", "-no-color", "-backend-config=\"..\\s3.backend-config.json\"", "-reconfigure" ],
             "type": "launch"
         },
         {
