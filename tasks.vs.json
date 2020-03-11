@@ -97,7 +97,7 @@
         },
         {
             "taskName": "terraform fmt",
-            "appliesTo": "*.tf",
+            "appliesTo": "*.tf,*.tfvars",
             "workingDirectory": "${fileDirname}",
             "command": "terraform",
             "args": [ "fmt", "-no-color" ],
