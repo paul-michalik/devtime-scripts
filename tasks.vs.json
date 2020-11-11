@@ -3,7 +3,7 @@
     "tasks": [
         {
             "taskName": "Invoke script",
-            "appliesTo": "*.`,*.ps1",
+            "appliesTo": "*.bat,*.ps1",
             "command": "${file}",
             "type": "launch"
         },
@@ -23,7 +23,7 @@
             "contextType": "custom"
         },
         {
-            "taskName": "all shell scripts executable for Git",
+            "taskName": "Make all shell scripts executable for Git",
             "appliesTo": "*",
             "command": "powershell",
             "type": "default",
@@ -38,7 +38,7 @@
         },
         {
             "taskName": "Make executable for Git",
-            "appliesTo": "*.sh,*.py",
+            "appliesTo": "*.`,*.sh,*.py",
             "command": "git",
             "args": [ "update-index", "--add", "--chmod=+x", "\"${file}\"" ],
             "type": "launch"
