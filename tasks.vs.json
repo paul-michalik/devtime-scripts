@@ -1,107 +1,150 @@
 {
-    "version": "0.2.1",
-    "tasks": [
-        {
-            "taskName": "Invoke script",
-            "appliesTo": "*.bat,*.ps1",
-            "command": "${file}",
-            "type": "launch"
-        },
-        {
-            "taskName": "Invoke bash script",
-            "appliesTo": "*.sh",
-            "command": "${env.HOMEPATH}\\Source\\devtime-scripts\\internal\\bash.bat",
-            "args": [ "\"${file}\"" ],
-            "type": "launch"
-        },
-        {
-            "taskName": "dos2unix",
-            "appliesTo": "*",
-            "command": "${env.HOMEPATH}\\Source\\devtime-scripts\\internal\\dos2unix.bat",
-            "args": [ "\"${file}\"" ],
-            "type": "launch",
-            "contextType": "custom"
-        },
-        {
-            "taskName": "Make all shell scripts executable for Git",
-            "appliesTo": "*",
-            "command": "powershell",
-            "type": "default",
-            "args": [ "${env.HOMEPATH}\\Source\\devtime-scripts\\internal\\all_sh_executable_for_git.ps1", "-folder", "\"${file}\"" ]
-        },
-        {
-            "taskName": "dos2unix for all scripts",
-            "appliesTo": "*",
-            "command": "powershell",
-            "type": "default",
-            "args": [ "${env.HOMEPATH}\\Source\\devtime-scripts\\internal\\all_dos2unix.ps1", "-folder", "\"${file}\"" ]
-        },
-        {
-            "taskName": "Make executable for Git",
-            "appliesTo": "*.`,*.sh,*.py",
-            "command": "git",
-            "args": [ "update-index", "--add", "--chmod=+x", "\"${file}\"" ],
-            "type": "launch"
-        },
-        {
-            "taskName": "terraform init",
-            "appliesTo": "*.tf",
-            "workingDirectory": "${fileDirname}",
-            "command": "terraform",
-            "args": [ "init", "-no-color", "-backend-config=\"..\\s3.backend-config.json\"", "-reconfigure" ],
-            "type": "launch"
-        },
-        {
-            "taskName": "terraform validate",
-            "appliesTo": "*.tf",
-            "workingDirectory": "${fileDirname}",
-            "command": "terraform",
-            "args": [ "validate", "-no-color" ],
-            "type": "launch"
-        },
-        {
-            "taskName": "terraform plan",
-            "appliesTo": "*.tf",
-            "workingDirectory": "${fileDirname}",
-            "command": "terraform",
-            "args": [ "plan", "-no-color" ],
-            "envVars": {
-                "TF_VAR_aws_region": "eu-central-1",
-                "TF_VAR_aws_profile": "default"
-            },
-            "type": "launch"
-        },
-        {
-            "taskName": "terraform plan destroy",
-            "appliesTo": "*.tf",
-            "workingDirectory": "${fileDirname}",
-            "command": "terraform",
-            "args": [ "plan", "-destroy", "-no-color" ],
-            "envVars": {
-                "TF_VAR_aws_region": "eu-central-1",
-                "TF_VAR_aws_profile": "default"
-            },
-            "type": "launch"
-        },
-        {
-            "taskName": "terraform output",
-            "appliesTo": "*.tf",
-            "workingDirectory": "${fileDirname}",
-            "command": "terraform",
-            "args": [ "output", "-no-color" ],
-            "envVars": {
-                "TF_VAR_aws_region": "eu-central-1",
-                "TF_VAR_aws_profile": "default"
-            },
-            "type": "launch"
-        },
-        {
-            "taskName": "terraform fmt",
-            "appliesTo": "*.tf,*.tfvars",
-            "workingDirectory": "${fileDirname}",
-            "command": "terraform",
-            "args": [ "fmt", "-no-color" ],
-            "type": "launch"
-        }
-    ]
+  "version": "0.2.1",
+  "tasks": [
+    {
+      "taskName": "Invoke script",
+      "appliesTo": "*.bat,*.ps1",
+      "command": "${file}",
+      "type": "launch"
+    },
+    {
+      "taskName": "Invoke bash script",
+      "appliesTo": "*.sh",
+      "command": "${env.HOMEPATH}\\Source\\devtime-scripts\\internal\\bash.bat",
+      "args": [
+        "\"${file}\""
+      ],
+      "type": "launch"
+    },
+    {
+      "taskName": "dos2unix",
+      "appliesTo": "*",
+      "command": "${env.HOMEPATH}\\Source\\devtime-scripts\\internal\\dos2unix.bat",
+      "args": [
+        "\"${file}\""
+      ],
+      "type": "launch",
+      "contextType": "custom"
+    },
+    {
+      "taskName": "Make all shell scripts executable for Git",
+      "appliesTo": "*",
+      "command": "powershell",
+      "type": "default",
+      "args": [
+        "${env.HOMEPATH}\\Source\\devtime-scripts\\internal\\all_sh_executable_for_git.ps1",
+        "-folder",
+        "\"${file}\""
+      ]
+    },
+    {
+      "taskName": "dos2unix for all scripts",
+      "appliesTo": "*",
+      "command": "powershell",
+      "type": "default",
+      "args": [
+        "${env.HOMEPATH}\\Source\\devtime-scripts\\internal\\all_dos2unix.ps1",
+        "-folder",
+        "\"${file}\""
+      ]
+    },
+    {
+      "taskName": "Make executable for Git",
+      "appliesTo": "*.`,*.sh,*.py",
+      "command": "git",
+      "args": [
+        "update-index",
+        "--add",
+        "--chmod=+x",
+        "\"${file}\""
+      ],
+      "type": "launch"
+    },
+    {
+      "taskName": "terraform init",
+      "appliesTo": "*.tf",
+      "workingDirectory": "${fileDirname}",
+      "command": "terraform",
+      "args": [
+        "init",
+        "-no-color",
+        "-backend-config=\"..\\s3.backend-config.json\"",
+        "-reconfigure"
+      ],
+      "type": "launch"
+    },
+    {
+      "taskName": "terraform validate",
+      "appliesTo": "*.tf",
+      "workingDirectory": "${fileDirname}",
+      "command": "terraform",
+      "args": [
+        "validate",
+        "-no-color"
+      ],
+      "type": "launch"
+    },
+    {
+      "taskName": "terraform plan",
+      "appliesTo": "*.tf",
+      "workingDirectory": "${fileDirname}",
+      "command": "terraform",
+      "args": [
+        "plan",
+        "-no-color"
+      ],
+      "envVars": {
+        "TF_VAR_aws_region": "eu-central-1",
+        "TF_VAR_aws_profile": "default"
+      },
+      "type": "launch"
+    },
+    {
+      "taskName": "terraform plan destroy",
+      "appliesTo": "*.tf",
+      "workingDirectory": "${fileDirname}",
+      "command": "terraform",
+      "args": [
+        "plan",
+        "-destroy",
+        "-no-color"
+      ],
+      "envVars": {
+        "TF_VAR_aws_region": "eu-central-1",
+        "TF_VAR_aws_profile": "default"
+      },
+      "type": "launch"
+    },
+    {
+      "taskName": "terraform output",
+      "appliesTo": "*.tf",
+      "workingDirectory": "${fileDirname}",
+      "command": "terraform",
+      "args": [
+        "output",
+        "-no-color"
+      ],
+      "envVars": {
+        "TF_VAR_aws_region": "eu-central-1",
+        "TF_VAR_aws_profile": "default"
+      },
+      "type": "launch"
+    },
+    {
+      "taskName": "terraform fmt",
+      "appliesTo": "*.tf,*.tfvars",
+      "workingDirectory": "${fileDirname}",
+      "command": "terraform",
+      "args": [
+        "fmt",
+        "-no-color"
+      ],
+      "type": "launch"
+    },
+    {
+      "taskLabel": "task-post_gen_project",
+      "appliesTo": "cookiecutter-templates/navvis.map.srv/hooks/post_gen_project.py",
+      "type": "launch"
+    }
+  ]
 }
