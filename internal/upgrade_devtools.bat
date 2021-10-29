@@ -18,5 +18,3 @@ if "%Path%"=="%Path:C:\Program Files\Git\bin;=%" (
 
 REM Update current shell with modified environment variables
 RefreshEnv
-
-REM  && choco upgrade -y vscode.install --params "/NoDesktopIcon /NoContextMenuFiles /NoContextMenuFolders /DontAssociateWithFiles /NoQuicklaunchIcon" ^
